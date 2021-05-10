@@ -2,11 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Market } from "../models/market.interface";
 
-class CryptoListItem extends React.Component<{ crypto: Market }> {
+class CryptoListItem extends React.Component<{ crypto: Market, onClick: any }> {
   render() {
-    let { crypto } = this.props;
+    let { crypto, onClick } = this.props;
+
     return (
-      <Link to={`/crypto/${crypto.id}`}>
+      <div onClick={onClick}>
+      {/*<Link to={`/crypto/${crypto.id}`}>*/}
         <a>
           <div className="crypto-container">
             <div className="crypto-row">
@@ -38,8 +40,10 @@ class CryptoListItem extends React.Component<{ crypto: Market }> {
             </div>
           </div>
         </a>
-      </Link>
+      {/*</Link>*/}
+      </div>
     );
+
   }
 }
 
