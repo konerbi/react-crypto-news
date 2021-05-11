@@ -30,7 +30,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
+    <div className="main-container">
       <CryptoList cryptos={markets} />
     </div>
   );

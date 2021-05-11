@@ -3,10 +3,15 @@ interface MarketData {
 	max_supply: number;
 	circulating_supply: number;
 	current_price: Currencies;
+	market_cap: Currencies;
 	market_cap_change_percentage_24h_in_currency: Currencies;
+	fully_diluted_valuation: Currencies;
+	total_volume: Currencies;
+	high_24h: Currencies;
+	low_24h: Currencies;
 }
 
-interface Currencies {
+export interface Currencies {
 	usd: number;
 	eur: number;
 	chf: number;

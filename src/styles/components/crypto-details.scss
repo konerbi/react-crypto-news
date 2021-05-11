@@ -1,19 +1,45 @@
-.crypto-details-page {
-  display: flex;
-  justify-content: center;
-  height: 75vh;
-  align-items: center;
+.crypto-details {
+  width: 50%;
 }
-
-.crypto-details-container {
+.header-container {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  border: 1px solid #2fffe5;
-  border-radius: 10px;
-  padding: 4rem;
-  width: 400px;
+  margin-bottom: 3rem;
+}
+.data-container {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+
+  h4 {
+    margin-bottom: 0.5rem;
+  }
+  p {
+    margin-bottom: 2rem;
+  }
+}
+.crypto-details-header {
+  display: flex;
+  align-items: center;
+  img {
+    margin-right: 1rem;
+  }
+}
+.crypto-details-value {
+  display: flex;
+  align-items: flex-end;
+  p {
+    margin-left: 1rem;
+  }
+}
+.crypto-percentage {
+  &.red {
+    color: #f00606;
+  }
+  &.green {
+    color: green;
+  }
 }
 
 .crypto-details-image {
@@ -22,13 +48,4 @@
 
 .crypto-details-name {
   margin-bottom: 1rem;
-}
-
-.crypto-details-ticker {
-  margin-bottom: 1rem;
-}
-
-.crypto-details-current {
-  margin-bottom: 1rem;
-  font-size: 2rem;
 }
