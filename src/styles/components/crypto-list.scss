@@ -1,0 +1,21 @@
+.crypto-list {
+  width: 60vw;
+  &.show {
+    visibility: visible;
+  }
+  &.hide {
+    visibility: hidden;
+  }
+  &.disabled {
+    opacity: 0.5;
+  }
+  &.enabled {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .crypto-list {
+    width: 100vw;
+  }
+}

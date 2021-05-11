@@ -1,3 +1,9 @@
+@import '../colors';
+
+h1, p {
+  color: $color-font-primary;
+}
+
 .crypto-container {
   display: flex;
   justify-content: center;
@@ -10,12 +16,10 @@
   align-items: center;
   height: 80px;
   border-bottom: 1px solid #2e2e2e;
-  width: 1000px;
-  padding: 0rem 2rem;
 }
 
 .crypto-row:hover {
-  background: #171718;
+  background: $color-table-row;
 }
 
 .crypto {
@@ -24,6 +28,10 @@
   padding-right: 24px;
 }
 
+.crypto-data-field {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
 .crypto-img {
   height: 30px;
   width: 30px;
@@ -32,7 +40,6 @@
 
 .crypto-h1 {
   font-size: 16px;
-  width: 150px;
 }
 
 .crypto-symbol {
@@ -43,29 +50,34 @@
   display: flex;
   text-align: right;
   justify-content: space-between;
-  width: 100%;
 }
 
-.crypto-price {
-  width: 110px;
-}
+//.crypto-price {
+//  width: 110px;
+//}
+//
+//.crypto-volume {
+//  width: 155px;
+//}
 
-.crypto-volume {
-  width: 155px;
-}
+//.crypto-marketcap {
+//  width: 230px;
+//}
 
-.crypto-marketcap {
-  width: 230px;
-}
-
-.crypto-percent {
-  width: 100px;
-}
+//.crypto-percent {
+//  width: 100px;
+//}
 
 .red {
-  color: #f00606;
+  color: $color-red;
 }
 
 .green {
-  color: #13c783;
+  color: $color-green;
+}
+
+@media screen and (max-width: 1225px){
+  .crypto-h1 {
+    display: none;
+  }
 }

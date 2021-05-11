@@ -1,11 +1,14 @@
-import {Component} from 'react';
+import React, {ChangeEvent, Component} from 'react';
 import {CryptoDetails, Currencies} from '../models/crypto-details.interface';
 import NumberFormat from 'react-number-format';
-import {constants} from 'crypto';
 import {CurrencySymbolEnum} from '../models/currency-symbol.enum';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import CloseIcon from '@material-ui/icons/Close';
+import {red} from '@material-ui/core/colors';
 
-class CryptoDetailsComponent extends Component<{ crypto: CryptoDetails | null }, { currentCurrency: string }> {
-	constructor(props: { crypto: CryptoDetails | null }) {
+class CryptoDetailsComponent extends Component<{ crypto: CryptoDetails | null, onClose: any }, { currentCurrency: string }> {
+	constructor(props: { crypto: CryptoDetails | null, onClose: any }) {
 		super(props);
 		this.state = {
 			currentCurrency: 'usd'
@@ -13,21 +16,46 @@ class CryptoDetailsComponent extends Component<{ crypto: CryptoDetails | null },
 	}
 	render() {
 		let {crypto} = this.props;
+		let availableCurrencies = Object.values(CurrencySymbolEnum);
+		let availableCurrenciesValues = Object.keys(CurrencySymbolEnum);
 
 		function isValueNegative(value: number | undefined) {
 			return Number(value) <= 0;
+		}
+
+		const handleCurrencyChange = (event: ChangeEvent<{ value: unknown }>) => {
+			this.setState({currentCurrency: event.target.value as string});
+		}
+
+		const handleCloseDetails = () => {
+			this.props.onClose();
 		}
 
 		return (
 			<div>
 				<div className="header-container">
 					<div className="crypto-details-header">
-						<img
-							src={crypto?.image.small}
-							alt={crypto?.name}
-							className="crypto-details-image"
-						/>
-						<h1 className="crypto-details-name">{crypto?.name + '(' + crypto?.symbol.toUpperCase() + ')'}</h1>
+						<div className="crypto-name">
+							<img
+								src={crypto?.image.small}
+								alt={crypto?.name}
+								className="crypto-details-image"
+							/>
+							<h1 className="crypto-details-name">{crypto?.name + '(' + crypto?.symbol.toUpperCase() + ')'}</h1>
+						</div>
+						<div>
+							<Select
+								labelId="demo-simple-select-outlined-label"
+								id="demo-simple-select-outlined"
+								value={this.state.currentCurrency as keyof Currencies}
+								onChange={handleCurrencyChange}
+								label="Currency"
+							>
+								{availableCurrencies.map((item, index) => {
+									return <MenuItem value={availableCurrenciesValues[index]}>{item}</MenuItem>;
+								})}
+							</Select>
+						</div>
 					</div>
 					<div className="crypto-details-value">
 						<h1>
@@ -40,7 +68,7 @@ class CryptoDetailsComponent extends Component<{ crypto: CryptoDetails | null },
 							{crypto?.market_data.market_cap_change_percentage_24h_in_currency[this.state.currentCurrency as keyof Currencies]}%
 						</p>
 					</div>
-					{/*<></> //currency select*/}
+					<CloseIcon className="close-icon" onClick={() => handleCloseDetails()} />
 				</div>
 				<div className="data-container">
 					<div>
@@ -113,26 +141,6 @@ class CryptoDetailsComponent extends Component<{ crypto: CryptoDetails | null },
 						</div>
 					</div>
 				</div>
-
-				{/*Market Cap*/}
-				{/*$1,072,504,626,371*/}
-
-
-				{/*24h Low / 24h High*/}
-				{/*$56,636.68 / $59,577.80*/}
-
-				{/*Fully Diluted Valuation*/}
-				{/*$1,204,052,010,000*/}
-
-				{/*24 Hour Trading Vol*/}
-				{/*$64,623,539,571*/}
-
-
-				{/*Circulating Supply*/}
-				{/*18,705,668 / 21,000,000*/}
-
-				{/*Max Supply*/}
-				{/*21,000,000*/}
 
 			</div>
 		);
