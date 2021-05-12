@@ -5,6 +5,7 @@ import {CurrencySymbolEnum} from '../models/currency-symbol.enum';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import CloseIcon from '@material-ui/icons/Close';
+import CryptoExchangeCalc from './CryptoExchangeCalc';
 
 class CryptoDetailsComponent extends Component<{ crypto: CryptoDetails | null, onClose: any }, { currentCurrency: string }> {
 	constructor(props: { crypto: CryptoDetails | null, onClose: any }) {
@@ -144,6 +145,9 @@ class CryptoDetailsComponent extends Component<{ crypto: CryptoDetails | null, o
 					</div>
 				</div>
 
+				<CryptoExchangeCalc crypto={crypto?.symbol.toUpperCase()}
+				                    currency={CurrencySymbolEnum[this.state.currentCurrency as keyof Currencies]}
+				                    value={crypto?.market_data.current_price[this.state.currentCurrency as keyof Currencies]}/>
 			</div>
 		);
 	}

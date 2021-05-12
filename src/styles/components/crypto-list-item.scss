@@ -72,6 +72,8 @@ h1, p {
   background-color: $color-table-header;
   padding-left: 1rem;
   padding-right: 1rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
   &:hover {
     background-color: $color-table-header;
   }
