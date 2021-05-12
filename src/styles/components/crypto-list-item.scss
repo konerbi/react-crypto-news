@@ -16,6 +16,7 @@ h1, p {
   align-items: center;
   height: 80px;
   border-bottom: 1px solid #2e2e2e;
+  min-width: 580px;
 }
 
 .crypto-row:hover {
@@ -25,6 +26,7 @@ h1, p {
 .crypto {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding-right: 24px;
 }
 
@@ -40,10 +42,12 @@ h1, p {
 
 .crypto-h1 {
   font-size: 16px;
+  display: none;
 }
 
 .crypto-symbol {
   text-transform: uppercase;
+  margin-left: 1rem;
 }
 
 .crypto-data {
@@ -51,22 +55,6 @@ h1, p {
   text-align: right;
   justify-content: space-between;
 }
-
-//.crypto-price {
-//  width: 110px;
-//}
-//
-//.crypto-volume {
-//  width: 155px;
-//}
-
-//.crypto-marketcap {
-//  width: 230px;
-//}
-
-//.crypto-percent {
-//  width: 100px;
-//}
 
 .red {
   color: $color-red;
@@ -76,8 +64,8 @@ h1, p {
   color: $color-green;
 }
 
-@media screen and (max-width: 1225px){
+@media screen and (min-width: 1280px){
   .crypto-h1 {
-    display: none;
+    display: block;
   }
 }

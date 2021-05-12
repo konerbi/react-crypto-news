@@ -16,6 +16,14 @@
 
 @media screen and (max-width: 1024px) {
   .crypto-list {
-    width: 100vw;
+    width: 90vw;
+    &.show {
+      display: block;
+      visibility: visible;
+    }
+    &.hide {
+      display: none;
+      visibility: hidden;
+    }
   }
 }

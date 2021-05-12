@@ -5,7 +5,6 @@ import {CurrencySymbolEnum} from '../models/currency-symbol.enum';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import CloseIcon from '@material-ui/icons/Close';
-import {red} from '@material-ui/core/colors';
 
 class CryptoDetailsComponent extends Component<{ crypto: CryptoDetails | null, onClose: any }, { currentCurrency: string }> {
 	constructor(props: { crypto: CryptoDetails | null, onClose: any }) {
@@ -33,7 +32,7 @@ class CryptoDetailsComponent extends Component<{ crypto: CryptoDetails | null, o
 
 		return (
 			<div>
-				<div className="header-container">
+				<div className="crypto-details-header-container">
 					<div className="crypto-details-header">
 						<div className="crypto-name">
 							<img
@@ -43,33 +42,35 @@ class CryptoDetailsComponent extends Component<{ crypto: CryptoDetails | null, o
 							/>
 							<h1 className="crypto-details-name">{crypto?.name + '(' + crypto?.symbol.toUpperCase() + ')'}</h1>
 						</div>
-						<div>
-							<Select
-								labelId="demo-simple-select-outlined-label"
-								id="demo-simple-select-outlined"
-								value={this.state.currentCurrency as keyof Currencies}
-								onChange={handleCurrencyChange}
-								label="Currency"
-							>
-								{availableCurrencies.map((item, index) => {
-									return <MenuItem value={availableCurrenciesValues[index]}>{item}</MenuItem>;
-								})}
-							</Select>
+						<CloseIcon className="close-icon" onClick={() => handleCloseDetails()} />
+					</div>
+					<div className="crypto-details-subheader">
+						<Select
+							labelId="demo-simple-select-outlined-label"
+							id="demo-simple-select-outlined"
+							value={this.state.currentCurrency as keyof Currencies}
+							onChange={handleCurrencyChange}
+							label="Currency"
+						>
+							{availableCurrencies.map((item, index) => {
+								return <MenuItem value={availableCurrenciesValues[index]}>{item}</MenuItem>;
+							})}
+						</Select>
+
+						<div className="crypto-details-value">
+							<h1>
+								<NumberFormat value={crypto?.market_data.current_price[this.state.currentCurrency as keyof Currencies]}
+								              displayType={'text'}
+								              thousandSeparator={true}
+								              prefix={CurrencySymbolEnum[this.state.currentCurrency as keyof Currencies]} />
+							</h1>
+							<p className={`crypto-percentage ${isValueNegative(crypto?.market_data.market_cap_change_percentage_24h_in_currency[this.state.currentCurrency as keyof Currencies]) ? "red" : "green"}`}>
+								{crypto?.market_data.market_cap_change_percentage_24h_in_currency[this.state.currentCurrency as keyof Currencies]}%
+							</p>
 						</div>
 					</div>
-					<div className="crypto-details-value">
-						<h1>
-							<NumberFormat value={crypto?.market_data.current_price[this.state.currentCurrency as keyof Currencies]}
-							              displayType={'text'}
-							              thousandSeparator={true}
-							              prefix={CurrencySymbolEnum[this.state.currentCurrency as keyof Currencies]} />
-						</h1>
-						<p className={`crypto-percentage ${isValueNegative(crypto?.market_data.market_cap_change_percentage_24h_in_currency[this.state.currentCurrency as keyof Currencies]) ? "red" : "green"}`}>
-							{crypto?.market_data.market_cap_change_percentage_24h_in_currency[this.state.currentCurrency as keyof Currencies]}%
-						</p>
-					</div>
-					<CloseIcon className="close-icon" onClick={() => handleCloseDetails()} />
 				</div>
+
 				<div className="data-container">
 					<div>
 						<div>

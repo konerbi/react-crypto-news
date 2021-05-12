@@ -20,7 +20,6 @@ const Home = () => {
         })
       )
       .subscribe((markets: Market[]) => {
-        console.log('===setMarkets====');
         setMarkets(markets);
       });
 

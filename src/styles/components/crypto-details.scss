@@ -25,6 +25,7 @@
 .data-container {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   width: 80%;
 
   h4 {
@@ -36,10 +37,18 @@
     color: $color-font-secondary;
   }
 }
-.crypto-details-header {
+.crypto-details-header-container {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin-bottom: 3rem;
+}
+.crypto-details-header,
+.crypto-details-subheader {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
 }
 .crypto-name {
   display: flex;
@@ -77,12 +86,6 @@
   margin-bottom: 1rem;
 }
 
-.close-icon {
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-
 .MuiSelect-select {
   background: $color-currency-select !important;
   border-radius: 0.3rem !important;
@@ -115,3 +118,19 @@
   background-color: rgba(0, 0, 0, 0.2) !important;
 }
 
+@media screen and (max-width: 1024px) {
+  .crypto-details {
+    top: 2rem;
+    width: 90vw;
+    position: relative;
+    &.show {
+      display: block;
+      visibility: visible;
+      left: auto;
+      opacity: 1;
+    }
+    &.hide {
+      display: none;
+    }
+  }
+}
