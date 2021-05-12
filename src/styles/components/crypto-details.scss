@@ -103,8 +103,9 @@
     background: $color-green !important;
   }
 }
+.MuiSelect-icon,
 .MuiSelect-select.MuiSelect-select {
-  color: $color-font-primary;
+  color: $color-font-primary !important;
 }
 .MuiPaper-root {
   color: $color-font-primary !important;

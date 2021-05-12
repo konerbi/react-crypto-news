@@ -47,15 +47,13 @@ class CryptoDetailsComponent extends Component<{ crypto: CryptoDetails | null, o
 						<CloseIcon className="close-icon" onClick={() => handleCloseDetails()} />
 					</div>
 					<div className="crypto-details-subheader">
-						<Select
-							labelId="demo-simple-select-outlined-label"
-							id="demo-simple-select-outlined"
+						<Select className="currency-select"
 							value={this.state.currentCurrency as keyof Currencies}
 							onChange={handleCurrencyChange}
 							label="Currency"
 						>
 							{availableCurrencies.map((item, index) => {
-								return <MenuItem value={availableCurrenciesValues[index]}>{item}</MenuItem>;
+								return <MenuItem key={`select-item-${index}`} value={availableCurrenciesValues[index]}>{item}</MenuItem>;
 							})}
 						</Select>
 

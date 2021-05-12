@@ -27,6 +27,7 @@
   align-items: center;
   background: $color-font-tertiary;
   border: thin solid $color-font-primary;
+  border-radius: 0.5rem;
 }
 
 .calc-currency-symbol {
@@ -38,6 +39,8 @@
   font-weight: bold;
   min-width: 5rem;
   padding: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
 }
 
 .change-icon {
