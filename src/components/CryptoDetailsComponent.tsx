@@ -41,6 +41,7 @@ class CryptoDetailsComponent extends Component<{ crypto: CryptoDetails | null, o
 								className="crypto-details-image"
 							/>
 							<h1 className="crypto-details-name">{crypto?.name + '(' + crypto?.symbol.toUpperCase() + ')'}</h1>
+							<h1 className="crypto-details-symbol">{crypto?.symbol.toUpperCase()}</h1>
 						</div>
 						<CloseIcon className="close-icon" onClick={() => handleCloseDetails()} />
 					</div>

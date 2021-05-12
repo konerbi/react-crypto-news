@@ -8,6 +8,7 @@ import CryptoDetailsComponent from './CryptoDetailsComponent';
 import {Subscription, interval} from 'rxjs';
 import {CircularProgress} from '@material-ui/core';
 import {Alert} from '@material-ui/lab';
+import CryptoListHeader from './CryptoListHeader';
 
 interface CryptoListState {
   currentCryptoDetails: CryptoDetails | null;
@@ -111,6 +112,9 @@ class CryptoList extends Component<CryptoListParams, CryptoListState> {
           Error loading details — try again
         </Alert>
         <CircularProgress className={`progress ${this.state.isLoadingDetails ? "show" : "hide"}`}/>
+        <div className={`crypto-list ${this.state.isCryptoDetailsVisible ? "hide" : "show"} ${this.state.isLoadingDetails ? "disabled" : "enabled"}`}>
+          <CryptoListHeader/>
+        </div>
         <div className={`crypto-list ${this.state.isCryptoDetailsVisible ? "hide" : "show"} ${this.state.isLoadingDetails ? "disabled" : "enabled"}`}>
           {cryptos.map((item, index) => {
             return <CryptoListItem key={'crypto-item' + index} crypto={item} onClick={() => handleListItemClick(index)}/>;

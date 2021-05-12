@@ -82,8 +82,15 @@
   margin-bottom: 1rem;
 }
 
-.crypto-details-name {
+.crypto-details-name,
+.crypto-details-symbol {
   margin-bottom: 1rem;
+}
+.crypto-details-name {
+  display: block;
+}
+.crypto-details-symbol {
+  display: none;
 }
 
 .MuiSelect-select {
@@ -119,6 +126,12 @@
 }
 
 @media screen and (max-width: 1024px) {
+  .crypto-details-name {
+    display: none;
+  }
+  .crypto-details-symbol {
+    display: block;
+  }
   .crypto-details {
     top: 2rem;
     width: 90vw;

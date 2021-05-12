@@ -10,13 +10,16 @@ h1, p {
 }
 
 .crypto-row {
+  cursor: pointer;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   height: 80px;
   border-bottom: 1px solid #2e2e2e;
-  min-width: 580px;
+  min-width: 650px;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .crypto-row:hover {
@@ -62,6 +65,20 @@ h1, p {
 
 .green {
   color: $color-green;
+}
+
+.crypto-list-header {
+  cursor: auto;
+  background-color: $color-table-header;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  &:hover {
+    background-color: $color-table-header;
+  }
+  p {
+    color: $color-font-secondary;
+    font-weight: bold;
+  }
 }
 
 @media screen and (min-width: 1280px){
